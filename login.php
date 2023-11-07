@@ -10,7 +10,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 $email = $data['email'];
 $password = $data['password'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($password)) {
-    echo json_encode(['error' => 'Invalid email or password ddijkasbdjsbadijsad.']);
+    echo json_encode(['error' => 'Invalid email or password.']);
     exit;
 }
 try {
@@ -30,5 +30,4 @@ try {
     echo json_encode(['error' => $e->getMessage()]);
     exit;
 }
-
 ?>
