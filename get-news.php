@@ -13,8 +13,7 @@
     $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode(
         array(
-            "message" => "Danh sách tin tức",
-            "news" => $news
+            "data" => $news
         )
     )
  ?>

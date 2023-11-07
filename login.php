@@ -20,9 +20,17 @@ try {
     $stmt->execute();
     $user = $stmt->fetch();
     if ($user && password_verify($password, $user['password'])) {
-        echo json_encode(['success' => 'Welcome back, ' . $user['name'] . '!']);
+        $response = [
+                'id' => $user['id'],
+                'name' => $user['name'],
+                'email' => $user['email'],
+        ];
+        $data = ['data' => $response];
+        echo json_encode($data);
         exit;
     } else {
+        // status code 401 is Unauthorized
+        http_response_code(401);
         echo json_encode(['error' => 'Invalid email or password.']);
         exit;
     }
