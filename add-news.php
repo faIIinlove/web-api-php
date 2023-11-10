@@ -10,9 +10,11 @@ include_once 'connection.php';
 $data = json_decode(file_get_contents("php://input"), true);
 $title = $data['title'];
 $content = $data['content'];
+$image = $data['image'];
 $topic_id = $data['topic_id'];
 $user_id = $data['user_id'];
-$query = "INSERT INTO news (title, content, topic_id, user_id, created_at) VALUES ('$title', '$content', '$topic_id', '$user_id', now())";
+
+$query = "INSERT INTO news (title, content, image, topic_id, user_id, created_at) VALUES ('$title', '$content', '$image', '$topic_id', '$user_id', now())";
 $stmt = $dbConn->prepare($query);
 $stmt->execute();
 echo json_encode(

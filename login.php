@@ -19,23 +19,28 @@ try {
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $user = $stmt->fetch();
+    if (!$user) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Invalid email or password.']);
+        exit;
+    }
+
     if ($user && password_verify($password, $user['password'])) {
         $response = [
-                'id' => $user['id'],
-                'name' => $user['name'],
-                'email' => $user['email'],
+            'id' => $user['id'],
+            'name' => $user['name'],
+            'email' => $user['email'],
         ];
         $data = ['data' => $response];
         echo json_encode($data);
         exit;
     } else {
-        // status code 401 is Unauthorized
         http_response_code(401);
         echo json_encode(['error' => 'Invalid email or password.']);
-        //ádasdasd
         exit;
     }
 } catch (PDOException $e) {
+    http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
     exit;
 }

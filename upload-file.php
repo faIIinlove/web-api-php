@@ -9,16 +9,19 @@
     
     try {
         $currentDirectory = getcwd();
-        $uploadDirectory = "/uploads";
+        $uploadDirectory = "/uploads/";
         $fileName = $_FILES['image']['name'];
         $fileTmpName  = $_FILES['image']['tmp_name'];
         $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
         move_uploaded_file($fileTmpName, $uploadPath);
         echo json_encode(
+            // array(
+            //     "error" => false,
+            //     "message" => "Upload successful",
+            //     "path" => "http://localhost:712/uploads/".$fileName
+            // )
             array(
-                "error" => false,
-                "message" => "Upload successful",
-                "path" => "http://localhost:712/uploads/".$fileName
+                "data" => "http://localhost:712/uploads/".$fileName
             )
         );
     } catch (Exception $e) {

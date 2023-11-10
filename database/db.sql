@@ -7,9 +7,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
+  `phone` varchar(255),
+  `address` varchar(255) ,
+  `role` varchar(255),
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `topic_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -61,14 +62,10 @@ INSERT INTO `topics` (`id`, `name`, `description`) VALUES
 (3, 'Giải trí', 'Tin tức giải trí');
 
 -- thêm dữ liệu vào bảng news
-INSERT INTO `news` (`id`, `title`, `content`, `created_at`, `topic_id`, `user_id`) VALUES
-(1, 'Tin tức 1', 'Nội dung tin tức 1', '2020-11-01 00:00:00', 1, 1),
-(2, 'Tin tức 2', 'Nội dung tin tức 2', '2020-11-01 00:00:00', 1, 1),
-(3, 'Tin tức 3', 'Nội dung tin tức 3', '2020-11-01 00:00:00', 1, 1),
-(4, 'Tin tức 4', 'Nội dung tin tức 4', '2020-11-01 00:00:00', 2, 1),
-(5, 'Tin tức 5', 'Nội dung tin tức 5', '2020-11-01 00:00:00', 2, 1),
-(6, 'Tin tức 6', 'Nội dung tin tức 6', '2020-11-01 00:00:00', 2, 1),
-(7, 'Tin tức 7', 'Nội dung tin tức 7', '2020-11-01 00:00:00', 3, 1),
-(8, 'Tin tức 8', 'Nội dung tin tức 8', '2020-11-01 00:00:00', 3, 1),
-(9, 'Tin tức 9', 'Nội dung tin tức 9', '2020-11-01 00:00:00', 3, 1),
-(10, 'Tin tức 10', 'Nội dung tin tức 10', '2020-11-01 00:00:00', 1, 2);
+INSERT INTO `news` (`id`, `title`, `content`, `image`, `created_at`, `topic_id`, `user_id`) VALUES
+(1, 'Tin tức 1', 'Nội dung tin tức 1', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 1, 1),
+(2, 'Tin tức 2', 'Nội dung tin tức 2', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 2, 1),
+(3, 'Tin tức 3', 'Nội dung tin tức 3', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 3, 1),
+(4, 'Tin tức 4', 'Nội dung tin tức 4', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 1, 2),
+(5, 'Tin tức 5', 'Nội dung tin tức 5', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 2, 2),
+(6, 'Tin tức 6', 'Nội dung tin tức 6', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 3, 2);
