@@ -7,14 +7,13 @@
 
     include_once 'connection.php';
     $news_id = $_GET["news_id"];
-    $query = "SELECT id, content FROM news WHERE id = $news_id";
+    $query = "SELECT * FROM news WHERE id = $news_id";
     $stmt = $dbConn->prepare($query);
     $stmt->execute();
     $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode(
         array(
-            "message" => "Chi tiết tin tức",
-            "news" => $news
+            "data" => $news
         )
     )
 
