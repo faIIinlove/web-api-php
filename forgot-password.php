@@ -8,27 +8,36 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once 'connection.php';
 include_once 'function/send-otp.php';
 
-$data = json_decode(file_get_contents("php://input"), true);
-$email = $data['email'];
-$query = "SELECT * FROM users WHERE email = '$email'";
-$stmt = $dbConn->prepare($query);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-if ($user) {
-    $otp = sendOTP($email);
-    $otpHashed = password_hash($otp, PASSWORD_DEFAULT);
-    $query = "INSERT INTO otp_expiry (otp, user_id, otp_expiry_time) VALUES ('$otpHashed', '$user[id]', now()+INTERVAL 60 MINUTE)";
+try {
+
+    $data = json_decode(file_get_contents("php://input"), true);
+    $email = $data['email'];
+    $query = "SELECT * FROM users WHERE email = '$email'";
     $stmt = $dbConn->prepare($query);
     $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($user) {
+        $otp = sendOTP($email);
+        $otpHashed = password_hash($otp, PASSWORD_DEFAULT);
+        $query = "INSERT INTO otp_expiry (otp, user_id, otp_expiry_time) VALUES ('$otpHashed', '$user[id]', now()+INTERVAL 60 MINUTE)";
+        $stmt = $dbConn->prepare($query);
+        $stmt->execute();
+        echo json_encode(
+            array(
+                "message" => "Mã OTP đã được gửi tới email của bạn"
+            )
+        );
+    } else {
+        echo json_encode(
+            array(
+                "message" => "Email không tồn tại"
+            )
+        );
+    }
+} catch (Exception $th) {
     echo json_encode(
         array(
-            "message" => "Mã OTP đã được gửi tới email của bạn"
-        )
-    );
-} else {
-    echo json_encode(
-        array(
-            "message" => "Email không tồn tại"
+            "message" => "Có lỗi xảy ra"
         )
     );
 }

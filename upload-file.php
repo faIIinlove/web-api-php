@@ -15,11 +15,6 @@
         $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
         move_uploaded_file($fileTmpName, $uploadPath);
         echo json_encode(
-            // array(
-            //     "error" => false,
-            //     "message" => "Upload successful",
-            //     "path" => "http://localhost:712/uploads/".$fileName
-            // )
             array(
                 "data" => "http://localhost:712/uploads/".$fileName
             )
