@@ -63,9 +63,17 @@ INSERT INTO `topics` (`id`, `name`, `description`) VALUES
 
 -- thêm dữ liệu vào bảng news
 INSERT INTO `news` (`id`, `title`, `content`, `image`, `created_at`, `topic_id`, `user_id`) VALUES
-(1, 'Tin tức 1', 'Nội dung tin tức 1', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 1, 1),
-(2, 'Tin tức 2', 'Nội dung tin tức 2', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 2, 1),
-(3, 'Tin tức 3', 'Nội dung tin tức 3', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 3, 1),
-(4, 'Tin tức 4', 'Nội dung tin tức 4', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 1, 2),
-(5, 'Tin tức 5', 'Nội dung tin tức 5', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 2, 2),
-(6, 'Tin tức 6', 'Nội dung tin tức 6', 'http://localhost:712/uploads/dog.png', '2021-05-18 00:00:00', 3, 2);
+(1, 'Tin tức 1', 'Nội dung tin tức 1', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 1, 1),
+(2, 'Tin tức 2', 'Nội dung tin tức 2', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 2, 1),
+(3, 'Tin tức 3', 'Nội dung tin tức 3', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(4, 'Tin tức 4', 'Nội dung tin tức 4', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 1, 1),
+(5, 'Tin tức 5', 'Nội dung tin tức 5', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 2, 1),
+(7, 'Tin tức 7', 'Nội dung tin tức 7', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(8, 'Tin tức 8', 'Nội dung tin tức 8', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(9, 'Tin tức 9', 'Nội dung tin tức 9', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(10, 'Tin tức 10', 'Nội dung tin tức 10', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(11, 'Tin tức 11', 'Nội dung tin tức 11', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(12, 'Tin tức 12', 'Nội dung tin tức 12', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(13, 'Tin tức 13', 'Nội dung tin tức 13', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(14, 'Tin tức 14', 'Nội dung tin tức 14', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1),
+(15, 'Tin tức 15', 'Nội dung tin tức 15', 'http://localhost:712/uploads/180.jpg', '2021-05-18 00:00:00', 3, 1)
