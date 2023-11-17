@@ -14,16 +14,6 @@
     $stmt = $dbConn->prepare($query);
     $stmt->execute();
     $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // // if data is empty return with 404
-    // if (empty($news)) {
-    //     http_response_code(404);
-    //     echo json_encode(
-    //         array(
-    //             "message" => "No news found."
-    //         )
-    //     );
-    //     exit();
-    // }
     echo json_encode(
         array(
             "data" => $news
