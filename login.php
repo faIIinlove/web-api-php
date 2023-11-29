@@ -32,6 +32,7 @@ try {
             'email' => $user['email'],
         ];
         $data = ['data' => $response];
+        http_response_code(200);
         echo json_encode($data);
         exit;
     } else {

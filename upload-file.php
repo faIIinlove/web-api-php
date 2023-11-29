@@ -16,7 +16,7 @@
         move_uploaded_file($fileTmpName, $uploadPath);
         echo json_encode(
             array(
-                "data" => "http://localhost:712/uploads/".$fileName
+                "data" => "http://192.168.0.102:712/uploads/".$fileName
             )
         );
     } catch (Exception $e) {

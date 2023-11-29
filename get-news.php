@@ -7,8 +7,6 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include_once 'connection.php';
 
-
-
 try {
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $limit = 10;
