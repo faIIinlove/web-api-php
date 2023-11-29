@@ -33,7 +33,8 @@ try {
             $stmt->execute([$newPasswordHashed, $user_id]);
             echo json_encode(
                 array(
-                    "message" => "Mật khẩu đã được thay đổi"
+                    http_response_code(200),
+                    "data" => "success"
                 )
             );
             $stmt = $dbConn->prepare("DELETE FROM otp_expiry WHERE user_id = ?");
@@ -41,21 +42,24 @@ try {
         } else {
             echo json_encode(
                 array(
-                    "message" => "Mật khẩu không khớp"
+                    http_response_code(400),
+                    "data" => "Mật khẩu không khớp"
                 )
             );
         }
     } else {
         echo json_encode(
             array(
-                "message" => "Mã OTP không hợp lệ hoặc đã hết hạn"
+                http_response_code(400),
+                "data" => "Mã OTP không hợp lệ hoặc đã hết hạn"
             )
         );
     }
 } catch (Exception $th) {
     echo json_encode(
         array(
-            "message" => "Có lỗi xảy ra"
+            http_response_code(500),
+            "data" => "Có lỗi xảy ra"
         )
     );
 }
