@@ -24,20 +24,23 @@ try {
         $stmt->execute();
         echo json_encode(
             array(
-                "message" => "Mã OTP đã được gửi tới email của bạn"
+                http_response_code(200),
+                "data" => "Mã OTP đã được gửi tới email của bạn"
             )
         );
     } else {
         echo json_encode(
             array(
-                "message" => "Email không tồn tại"
+                http_response_code(400),
+                "data" => "Email không tồn tại"
             )
         );
     }
 } catch (Exception $th) {
     echo json_encode(
         array(
-            "message" => "Có lỗi xảy ra"
+            http_response_code(500),
+            "data" => "Có lỗi xảy ra"
         )
     );
 }

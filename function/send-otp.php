@@ -4,8 +4,6 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-// $mail = new PHPMailer(true);
-
 function generateOTP()
 {
     $otp = rand(100000, 999999);
@@ -40,7 +38,6 @@ function sendOTP($email)
         $mail->AltBody = "Your OTP is: $otp. This OTP will expire on $otp_expiry_time.";
 
         $mail->send();
-        echo 'Your OTP has been sent';
     } catch (Exception $e) {
         echo "Your email could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
