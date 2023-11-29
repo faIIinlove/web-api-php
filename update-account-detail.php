@@ -8,18 +8,6 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once 'connection.php';
 
 try {
-    // CREATE TABLE IF NOT EXISTS `users` (
-    //     `id` int(11) NOT NULL AUTO_INCREMENT,
-    //     `email` varchar(255) NOT NULL,
-    //     `password` varchar(255) NOT NULL,
-    //     `name` varchar(255) NOT NULL,
-    //     `phone` varchar(255),
-    //     `address` varchar(255) ,
-    //     `role` varchar(255),
-    //     PRIMARY KEY (`id`),
-    //     UNIQUE KEY `email` (`email`)
-    //   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
     $data = json_decode(file_get_contents("php://input"));
     $id = $data->id;
     $name = $data->name;

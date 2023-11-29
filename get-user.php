@@ -8,13 +8,13 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 //Get all user 
 include_once 'connection.php';
 try {
-    $query = "SELECT id, email, name, phone, address, role FROM users   ";
+    $query = "SELECT id, email, name, phone, address, role FROM users";
     $stmt = $dbConn->prepare($query);
     $stmt->execute();
-    $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode(
         array(
-            "data" => $news
+            "data" => $user
         )
     );
 } catch (PDOException $e) {

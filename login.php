@@ -9,8 +9,9 @@ include_once 'connection.php';
 $data = json_decode(file_get_contents("php://input"), true);
 $email = $data['email'];
 $password = $data['password'];
-if (!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($password)) {
-    echo json_encode(['error' => 'Invalid email or password.']);
+if (empty($email)|| empty($password)) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Invalid email or password tomheo11233.']);
     exit;
 }
 try {
@@ -21,7 +22,7 @@ try {
     $user = $stmt->fetch();
     if (!$user) {
         http_response_code(401);
-        echo json_encode(['error' => 'Invalid email or password.']);
+        echo json_encode(['error' => 'Invalid email or password tomheo11233 2.']);
         exit;
     }
 
@@ -30,14 +31,17 @@ try {
             'id' => $user['id'],
             'name' => $user['name'],
             'email' => $user['email'],
+            'phone' => $user['phone'],
+            'address' => $user['address'],
+            'role' => $user['role'],
         ];
-        $data = ['data' => $response];
+        $data = ["data" => $response];
         http_response_code(200);
         echo json_encode($data);
         exit;
     } else {
         http_response_code(401);
-        echo json_encode(['error' => 'Invalid email or password.']);
+        echo json_encode(['error' => 'Invalid email or password tomheo11233 3.']);
         exit;
     }
 } catch (PDOException $e) {
